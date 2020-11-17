@@ -83,7 +83,7 @@ public class Arquivo {
 			throw new IOException("Diretório inválido");
 		}
 	}
-
+	//Gerar texto Usuário
 	private String geraTxt() {
 		StringBuffer buffer = new StringBuffer();
 			String nome = JOptionPane.showInputDialog("Digite o nome");

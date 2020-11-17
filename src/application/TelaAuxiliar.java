@@ -2,26 +2,31 @@ package application;
 
 import javax.swing.JOptionPane;
 
+
+import model.services.CandidatoService;
+
 public class TelaAuxiliar {
 	
 	public void candidatoTela() {
 		int op = 0;
 
 		while (op != 9) {
+			CandidatoService service = new CandidatoService();
 			op = Integer.parseInt(JOptionPane
 					.showInputDialog("CANDIDATO"+"\nDigite 1: Realizar inscrição" + "\nDigite 2: Acompanhar inscrição"
 							+ "\nDigite 3: Solicitar recurso" + "\nDigite 9: Voltar"));
 			switch (op) {
 			case 1:
-				//realizaInscrição()
+				
+			   service.RealizaInscricao();
 				break;
 
 			case 2:
-				//acompanhaInscricao()
+				service.acompanhaInscricao();
 				break;
 
 			case 3:
-				//solicitaRecurso()
+				service.solicitaRecurso();
 				break;
 
 			case 9:

@@ -14,9 +14,9 @@ public class Main {
 
 		while (!user.equals("sair")) {
 			user = JOptionPane.showInputDialog("BEM-VINDO AO PROJETO INTEGRADO\n" + "\nDigite o usuário"
-					+ "\nDigite cadastrar para inserir usuário" + "\nDigite sair para finalizar");
+					+ "\nDigite 'cadastrar' para inserir usuário" + "\nDigite sair para finalizar");
 			
-			if (!user.equals("sair")) {
+			if (!user.equals("sair") && !user.equals("cadastrar")) {
 				try {
 					user = arq.lerArquivo(user);
 				} catch (IOException e) {
@@ -42,7 +42,11 @@ public class Main {
 			
 
 			case "cadastrar":
-				// metodo cadastra usuario
+				try {
+					arq.gravarArquivo();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 				break;
 
 			case "sair":

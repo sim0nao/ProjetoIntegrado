@@ -56,7 +56,7 @@ public class Arquivo {
 
 	
 	
-	//
+	
 	public void gravarArquivo() throws IOException {
 		File dir = new File("C:\\TEMP");
 		
@@ -86,13 +86,13 @@ public class Arquivo {
 
 	private String geraTxt() {
 		StringBuffer buffer = new StringBuffer();
-		String linha="";
-		while(!linha.equalsIgnoreCase("fim")) {
-			linha=JOptionPane.showInputDialog(null, "");
-			if(!linha.equalsIgnoreCase("fim")) {
-				buffer.append(linha+"\r\n");
-			}
-		}
+			String nome = JOptionPane.showInputDialog("Digite o nome");
+			String email = JOptionPane.showInputDialog("Digite o email");
+			String senha = JOptionPane.showInputDialog("Digite a senha");
+			String cpf = JOptionPane.showInputDialog("Digite o cpf");
+			String posicao= JOptionPane.showInputDialog("Digite o acesso (Presidente/CPS/CRA/Candidato)");		
+			buffer.append("\n"+nome+","+email+","+senha+","+cpf+","+posicao);
+
 		return buffer.toString();
 	}
 

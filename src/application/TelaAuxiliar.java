@@ -17,7 +17,6 @@ public class TelaAuxiliar {
 							+ "\nDigite 3: Solicitar recurso" + "\nDigite 9: Voltar"));
 			switch (op) {
 			case 1:
-				
 			   service.RealizaInscricao();
 				break;
 

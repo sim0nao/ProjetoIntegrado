@@ -1,6 +1,6 @@
 package model.entities;
 
-public class Usuario2 extends Usuario{
+public class Presidente extends Usuario{
 
 	@Override
 	public void visualisarEdital() {

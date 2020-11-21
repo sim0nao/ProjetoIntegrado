@@ -10,14 +10,17 @@ import java.io.PrintWriter;
 
 import javax.swing.JOptionPane;
 
-import model.entities.Usuario2;
+import model.entities.CPS;
+import model.entities.CRA;
+import model.entities.Candidato;
+import model.entities.Presidente;
+import model.entities.Usuario;
 
 public class Arquivo {
 
 	public String lerArquivo(String user) throws IOException {
 
-		Usuario2 usuario = new Usuario2();
-		String qlqcoisa = "não acho";
+		Usuario usuario;
 		File dir = new File("C:\\TEMP");
 		File arq = new File("C:\\TEMP", "Usuarios.txt");
 
@@ -29,7 +32,17 @@ public class Arquivo {
 				String linha = buffer.readLine();
 				while (linha != null) { // procurando End Of File (EOF)
 					String[] dados = linha.split(",");
+					
 					if (dados[0].equals(user)) {
+						if(dados[4].contains("Presidente")) {
+							usuario = new Presidente();
+						}else if(dados[4].contains("CPS")) {
+							usuario= new CPS();
+						}else if(dados[4].contains("CRA")) {
+							usuario = new CRA();
+						}else {
+							usuario = new Candidato();
+						}
 						usuario.setNome(dados[0]);
 						usuario.setEmail(dados[1]);
 						usuario.setSenha(dados[2]);
@@ -50,7 +63,7 @@ public class Arquivo {
 		} else {
 			throw new IOException("Diretório inválido");
 		}
-		return qlqcoisa;
+		return null;
 	}
 	
 

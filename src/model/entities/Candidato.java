@@ -1,6 +1,6 @@
 package model.entities;
 
-public class Candidato  extends Usuario2{
+public class Candidato  extends Usuario{
 
 	private String DataNascimento;
 	private int Telefone;

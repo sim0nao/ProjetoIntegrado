@@ -1,5 +1,7 @@
 package application;
 
+import java.io.IOException;
+
 import javax.swing.JOptionPane;
 
 
@@ -7,7 +9,7 @@ import model.services.CandidatoService;
 
 public class TelaAuxiliar {
 	
-	public void candidatoTela() {
+	public void candidatoTela() throws IOException {
 		int op = 0;
 
 		while (op != 9) {

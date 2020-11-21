@@ -7,7 +7,7 @@ import util.Arquivo;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		TelaAuxiliar tela = new TelaAuxiliar();
 		Arquivo arq= new Arquivo();
 		String user = "";
@@ -43,7 +43,7 @@ public class Main {
 
 			case "cadastrar":
 				try {
-					arq.gravarArquivo();
+					arq.gravarUsuario();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

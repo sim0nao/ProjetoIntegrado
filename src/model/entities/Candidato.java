@@ -3,7 +3,7 @@ package model.entities;
 public class Candidato  extends Usuario{
 
 	private String DataNascimento;
-	private int Telefone;
+	private long Telefone;
 	private String Endereco;
 	private boolean Deficiencia;
 	private int Nota;
@@ -15,10 +15,10 @@ public class Candidato  extends Usuario{
 	public void setDataNascimento(String dataNascimento) {
 		DataNascimento = dataNascimento;
 	}
-	public int getTelefone() {
+	public long getTelefone() {
 		return Telefone;
 	}
-	public void setTelefone(int telefone) {
+	public void setTelefone(long telefone) {
 		Telefone = telefone;
 	}
 	public String getEndereco() {

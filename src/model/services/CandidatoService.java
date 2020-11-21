@@ -1,9 +1,12 @@
 package model.services;
 
+import java.io.IOException;
+
 import javax.swing.JOptionPane;
 
 import model.entities.Candidato;
 import util.LinkedList;
+import util.Arquivo;
 
 public class CandidatoService {
 	
@@ -11,12 +14,12 @@ public class CandidatoService {
 		return null;
 	}
 	
-	public void RealizaInscricao () {
+	public void RealizaInscricao () throws IOException {
 		int D;
-		
+		Arquivo arq = new Arquivo();
 		Candidato user = new Candidato ();
 		user.setDataNascimento(JOptionPane.showInputDialog("Digite data de Nascimento DD/MM/AAAA"));
-		user.setTelefone(Integer.parseInt(JOptionPane.showInputDialog("Digite telefone")));
+		user.setTelefone(Long.parseLong(JOptionPane.showInputDialog("Digite telefone")));
 		user.setEndereco(JOptionPane.showInputDialog("Digite endereço"));
 		D =  Integer.parseInt(JOptionPane.showInputDialog("Se possuir alguma deficiência Digite 1, caso contrario 2"));
 		if (D == 1) {
@@ -25,7 +28,9 @@ public class CandidatoService {
 			user.setDeficiencia(false);
 		}
 		 
-		System.out.println(user.getNome() +" "+ user.getEmail()+""+user.getCpf()+ "  " +user);
+		System.out.println(user.getNome() +" "+ user.getEmail()+" "+user.getCpf()+ "  " +user);
+		String textoCandidato= user.toString();
+		arq.gravaCandidato(textoCandidato);
 	}
 	
 	public void acompanhaInscricao() {

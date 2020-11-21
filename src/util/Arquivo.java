@@ -70,7 +70,7 @@ public class Arquivo {
 	
 	
 	
-	public void gravarArquivo() throws IOException {
+	public void gravarUsuario() throws IOException {
 		File dir = new File("C:\\TEMP");
 		
 		if (dir.mkdir()) {
@@ -107,6 +107,26 @@ public class Arquivo {
 			buffer.append("\n"+nome+","+email+","+senha+","+cpf+","+posicao);
 
 		return buffer.toString();
+	}
+	
+	public void gravaCandidato(String textoCandidato) throws IOException{
+		File dir = new File("C:\\TEMP");
+		File arq = new File("C:\\TEMP", "Candidatos.txt" );
+		if (dir.exists() && dir.isDirectory()) {
+			boolean existe = false;
+			if (arq.exists()) {
+				existe = true;
+			}
+			String conteudo = textoCandidato+"\n";
+			FileWriter fileWriter = new FileWriter(arq, existe);
+			PrintWriter print = new PrintWriter(fileWriter);
+			print.write(conteudo);
+			print.flush();
+			print.close();
+			fileWriter.close();
+		}else {
+			throw new IOException("Diretório inválido");
+		}
 	}
 
 }

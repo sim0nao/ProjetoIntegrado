@@ -12,7 +12,7 @@ import model.services.PresidenteService;
 
 public class TelaAuxiliar {
 	
-	public void candidatoTela() throws IOException {
+	public void candidatoTela(String cpf) throws IOException {
 		int op = 0;
 
 		while (op != 9) {
@@ -22,15 +22,15 @@ public class TelaAuxiliar {
 							+ "\nDigite 3: Solicitar recurso" + "\nDigite 9: Voltar"));
 			switch (op) {
 			case 1:
-			   service.RealizaInscricao();
+			   service.RealizaInscricao(cpf);
 				break;
 
 			case 2:
-				service.acompanhaInscricao();
+				service.acompanhaInscricao(cpf);
 				break;
 
 			case 3:
-				service.solicitaRecurso();
+				service.solicitaRecurso(cpf);
 				break;
 
 			case 9:

@@ -18,7 +18,7 @@ import model.entities.Usuario;
 
 public class Arquivo {
 
-	public String lerArquivo(String user) throws IOException {
+	public Usuario lerArquivo(String user) throws IOException {
 
 		Usuario usuario;
 		File dir = new File("C:\\TEMP");
@@ -43,14 +43,14 @@ public class Arquivo {
 						}else {
 							usuario = new Candidato();
 						}
-						usuario.setNome(dados[0]);
-						usuario.setEmail(dados[1]);
-						usuario.setSenha(dados[2]);
-						usuario.setCpf(Integer.parseInt(dados[3]));
+						usuario.setNome(dados[1]);
+						usuario.setEmail(dados[2]);
+						usuario.setSenha(dados[3]);
+						usuario.setCpf(dados[0]);
 						buffer.close();
 						leitor.close();
 						fluxo.close();
-						return dados[4];
+						return usuario;
 					}
 					linha = buffer.readLine();
 				}
@@ -103,8 +103,11 @@ public class Arquivo {
 			String email = JOptionPane.showInputDialog("Digite o email");
 			String senha = JOptionPane.showInputDialog("Digite a senha");
 			String cpf = JOptionPane.showInputDialog("Digite o cpf");
-			String posicao= JOptionPane.showInputDialog("Digite o acesso (Presidente/CPS/CRA/Candidato)");		
-			buffer.append("\n"+nome+","+email+","+senha+","+cpf+","+posicao);
+			String posicao= JOptionPane.showInputDialog("Digite o acesso (Presidente/CPS/CRA/Candidato)");	
+			posicao=posicao.toUpperCase();		
+			System.out.println(posicao);
+			
+			buffer.append("\n"+cpf+","+nome+","+email+","+senha+","+posicao);
 
 		return buffer.toString();
 	}
@@ -127,6 +130,40 @@ public class Arquivo {
 		}else {
 			throw new IOException("Diretório inválido");
 		}
+	}
+	
+	public String tipo(String user) throws IOException {
+
+		File dir = new File("C:\\TEMP");
+		File arq = new File("C:\\TEMP", "Usuarios.txt");
+
+		if (dir.exists() && dir.isDirectory()) {
+			if (arq.exists() && arq.isFile()) {
+				FileInputStream fluxo = new FileInputStream(arq);
+				InputStreamReader leitor = new InputStreamReader(fluxo);
+				BufferedReader buffer = new BufferedReader(leitor);
+				String linha = buffer.readLine();
+				while (linha != null) { // procurando End Of File (EOF)
+					String[] dados = linha.split(",");
+					
+					if (dados[0].equals(user)) {
+						buffer.close();
+						leitor.close();
+						fluxo.close();
+						return dados[4];
+					}
+					linha = buffer.readLine();
+				}
+				buffer.close();
+				leitor.close();
+				fluxo.close();
+			} else {
+				System.out.println("Usuário não encontrado");
+			}
+		} else {
+			throw new IOException("Diretório inválido");
+		}
+		return null;
 	}
 
 }

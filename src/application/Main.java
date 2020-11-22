@@ -3,6 +3,8 @@ package application;
 import java.io.IOException;
 
 import javax.swing.JOptionPane;
+
+import model.entities.Usuario;
 import util.Arquivo;
 
 public class Main {
@@ -10,25 +12,29 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		TelaAuxiliar tela = new TelaAuxiliar();
 		Arquivo arq= new Arquivo();
-		String user = "";
+		Usuario usuario=null;
+		String user="";
 
 		while (!user.equals("sair")) {
-			user = JOptionPane.showInputDialog("BEM-VINDO AO PROJETO INTEGRADO\n" + "\nDigite o usuário"
+			user = JOptionPane.showInputDialog("BEM-VINDO AO PROJETO INTEGRADO\n" + "\nDigite o cpf do usuário"
 					+ "\nDigite 'cadastrar' para inserir usuário" + "\nDigite sair para finalizar");
 			
-			if (!user.equals("sair") && !user.equals("cadastrar")) {
+			user=user.toUpperCase();
+			
+			if (!user.equals("SAIR") && !user.equals("CADASTRAR")) {
 				try {
-					user = arq.lerArquivo(user);
+					usuario = arq.lerArquivo(user);
+					user=arq.tipo(user);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
 			switch (user) {
-			case "Candidato":
-				tela.candidatoTela();
+			case "CANDIDATO":
+				tela.candidatoTela(usuario.getCpf());
 				break;
 
-			case "Presidente":
+			case "PRESIDENTE":
 				tela.presidenteTela();
 				break;
 
@@ -41,7 +47,7 @@ public class Main {
 				break;
 			
 
-			case "cadastrar":
+			case "CADASTRAR":
 				try {
 					arq.gravarUsuario();
 				} catch (IOException e) {
@@ -49,7 +55,7 @@ public class Main {
 				}
 				break;
 
-			case "sair":
+			case "SAIR":
 				JOptionPane.showMessageDialog(null, "Saindo");
 				break;
 

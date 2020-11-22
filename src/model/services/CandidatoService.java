@@ -14,10 +14,14 @@ public class CandidatoService {
 		return null;
 	}
 	
-	public void RealizaInscricao () throws IOException {
+	public void RealizaInscricao (String cpf) throws IOException {
+		
 		int D;
 		Arquivo arq = new Arquivo();
-		Candidato user = new Candidato ();
+		Candidato user = new Candidato();
+		
+		user=(Candidato)arq.lerArquivo(cpf);
+		
 		user.setDataNascimento(JOptionPane.showInputDialog("Digite data de Nascimento DD/MM/AAAA"));
 		user.setTelefone(Long.parseLong(JOptionPane.showInputDialog("Digite telefone")));
 		user.setEndereco(JOptionPane.showInputDialog("Digite endereço"));
@@ -28,16 +32,16 @@ public class CandidatoService {
 			user.setDeficiencia(false);
 		}
 		 
-		System.out.println(user.getNome() +" "+ user.getEmail()+" "+user.getCpf()+ "  " +user);
+		System.out.println(user.getNome() +", "+ user.getEmail()+", "+user.getCpf()+ ", " +user);
 		String textoCandidato= user.toString();
 		arq.gravaCandidato(textoCandidato);
 	}
 	
-	public void acompanhaInscricao() {
+	public void acompanhaInscricao(String cpf) {
 		
 	}
 	
-	public void solicitaRecurso() {
+	public void solicitaRecurso(String cpf) {
 		
 	}
 }

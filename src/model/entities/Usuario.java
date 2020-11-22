@@ -5,12 +5,12 @@ public abstract class Usuario {
 	private String nome;
 	private String email;
 	private String senha;
-	private int cpf;
+	private String cpf;
 	
 	public Usuario() {
 	}
 
-	public Usuario(String nome, String email, String senha, int cpf) {
+	public Usuario(String nome, String email, String senha, String cpf) {
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
@@ -43,14 +43,13 @@ public abstract class Usuario {
 		this.senha = senha;
 	}
 
-	public int getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(int cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 	
-	
-	
+		
 }

@@ -140,7 +140,7 @@ public class Arquivo {
 		File dir = new File("C:\\TEMP");
 		File arq = new File("C:\\TEMP", "Candidatos.txt");
 		
-		String mostraCandidatos="";
+		String mostraCandidatos="CPF/Nome/Email \n";
 
 		if (dir.exists() && dir.isDirectory()) {
 			if (arq.exists() && arq.isFile()) {
@@ -149,7 +149,8 @@ public class Arquivo {
 				BufferedReader buffer = new BufferedReader(leitor);
 				String linha = buffer.readLine();
 				while (linha != null) { // procurando End Of File (EOF)
-					mostraCandidatos+=linha+"\n";
+					String[] info= linha.split(",");
+					mostraCandidatos+=info[0]+info[1]+info[2]+"\n";
 					linha=buffer.readLine();
 				}
 				buffer.close();

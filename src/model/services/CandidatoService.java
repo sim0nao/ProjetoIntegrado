@@ -7,7 +7,9 @@ import javax.swing.JOptionPane;
 import model.entities.Candidato;
 import model.entities.Curriculo;
 import util.LinkedList;
-import util.Arquivo;
+import util.ArquivosUsuario;
+import util.ArquivosCandidato;
+import util.ArquivosCurriculo;
 
 public class CandidatoService {
 	
@@ -18,11 +20,13 @@ public class CandidatoService {
 	public void RealizaInscricao (String cpf) throws IOException {
 		
 		int D;
-		Arquivo arq = new Arquivo();
+		ArquivosUsuario usu = new ArquivosUsuario();
+		ArquivosCandidato can= new ArquivosCandidato();
+		ArquivosCurriculo cur= new ArquivosCurriculo();
 		Candidato user = new Candidato();
 		Curriculo curriculo= new Curriculo();
 		
-		user=(Candidato)arq.lerArquivo(cpf);
+		user=(Candidato)usu.lerUsuario(cpf);
 		
 		user.setDataNascimento(JOptionPane.showInputDialog("Digite data de Nascimento DD/MM/AAAA"));
 		user.setTelefone(Long.parseLong(JOptionPane.showInputDialog("Digite telefone")));
@@ -33,9 +37,8 @@ public class CandidatoService {
 		}else if(D==2) {
 			user.setDeficiencia(false);
 		}
-		//System.out.println(user.getNome() +", "+ user.getEmail()+", "+user.getCpf()+ ", " +user);
 		String textoCandidato= user.toString();
-		arq.gravaCandidato(textoCandidato);
+		can.gravaCandidato(textoCandidato);
 		
 		//Cadastrar Curriculo
 		JOptionPane.showMessageDialog(null, "Cadastre o curriculo");
@@ -48,14 +51,14 @@ public class CandidatoService {
 		curriculo.setExperiencia(JOptionPane.showInputDialog("Digite a experiência"));
 		
 		String textoCurriculo=curriculo.toString();
-		arq.gravarCurriculo(textoCurriculo);
+		cur.gravarCurriculo(textoCurriculo);
 
 	}
 	
 	public void acompanhaInscricao(String cpf) throws IOException {
-		Arquivo arq = new Arquivo();
+		ArquivosUsuario usu = new ArquivosUsuario();
 		Candidato user = new Candidato();
-		user=(Candidato)arq.lerArquivo(cpf);
+		user=(Candidato)usu.lerUsuario(cpf);
 		
 		if(user.getStatus()==null) {
 			user.setStatus("AGUARDANDO");
@@ -65,9 +68,9 @@ public class CandidatoService {
 	}
 	
 	public void solicitaRecurso(String cpf) throws IOException {
-		Arquivo arq = new Arquivo();
+		ArquivosUsuario usu = new ArquivosUsuario();
 		Candidato user = new Candidato();
-		user=(Candidato)arq.lerArquivo(cpf);
+		user=(Candidato)usu.lerUsuario(cpf);
 		
 		if(user.getStatus()=="APROVADO"){
 			JOptionPane.showMessageDialog(null, "Candidato aprovado, não é possivel solicitar recurso");

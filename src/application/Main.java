@@ -5,13 +5,13 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 
 import model.entities.Usuario;
-import util.Arquivo;
+import util.ArquivosUsuario;
 
 public class Main {
 
 	public static void main(String[] args) throws IOException {
 		TelaAuxiliar tela = new TelaAuxiliar();
-		Arquivo arq= new Arquivo();
+		ArquivosUsuario usu= new ArquivosUsuario();
 		Usuario usuario=null;
 		String user="";
 
@@ -23,8 +23,8 @@ public class Main {
 			
 			if (!user.equals("SAIR") && !user.equals("CADASTRAR")) {
 				try {
-					usuario = arq.lerArquivo(user);
-					user=arq.tipo(user);
+					usuario = usu.lerUsuario(user);
+					user=usu.tipo(user);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -50,7 +50,7 @@ public class Main {
 
 			case "CADASTRAR":
 				try {
-					arq.gravarUsuario();
+					usu.gravarUsuario();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

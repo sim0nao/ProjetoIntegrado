@@ -31,17 +31,33 @@ public class CandidatoService {
 		}else if(D==2) {
 			user.setDeficiencia(false);
 		}
-		 
-		System.out.println(user.getNome() +", "+ user.getEmail()+", "+user.getCpf()+ ", " +user);
+		//System.out.println(user.getNome() +", "+ user.getEmail()+", "+user.getCpf()+ ", " +user);
 		String textoCandidato= user.toString();
 		arq.gravaCandidato(textoCandidato);
 	}
 	
-	public void acompanhaInscricao(String cpf) {
+	public void acompanhaInscricao(String cpf) throws IOException {
+		Arquivo arq = new Arquivo();
+		Candidato user = new Candidato();
+		user=(Candidato)arq.lerArquivo(cpf);
+		
+		if(user.getStatus()==null) {
+			user.setStatus("AGUARDANDO");
+		}
+		JOptionPane.showMessageDialog(null, user.getNome()+", "+user.getEmail()+", "+user.getStatus());
 		
 	}
 	
-	public void solicitaRecurso(String cpf) {
+	public void solicitaRecurso(String cpf) throws IOException {
+		Arquivo arq = new Arquivo();
+		Candidato user = new Candidato();
+		user=(Candidato)arq.lerArquivo(cpf);
 		
+		if(user.getStatus()=="APROVADO"){
+			JOptionPane.showMessageDialog(null, "Candidato aprovado, não é possivel solicitar recurso");
+		}
+		
+		String motivoRecurso = JOptionPane.showInputDialog("Especifique motivo do recurso");
+		//System.out.println(motivoRecurso);
 	}
 }

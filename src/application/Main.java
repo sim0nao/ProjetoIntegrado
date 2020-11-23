@@ -15,9 +15,9 @@ public class Main {
 		Usuario usuario=null;
 		String user="";
 
-		while (!user.equals("sair")) {
-			user = JOptionPane.showInputDialog("BEM-VINDO AO PROJETO INTEGRADO\n" + "\nDigite o cpf do usuário"
-					+ "\nDigite 'cadastrar' para inserir usuário" + "\nDigite sair para finalizar");
+		while (!user.equals("SAIR")) {
+			user = JOptionPane.showInputDialog("BEM-VINDO AO PROJETO INTEGRADO\n" + "\nDigite o CPF do usuário" + "\n Ou digite"
+					+ "\n 'cadastrar' para inserir usuário" + "\n 'sair' para finalizar");
 			
 			user=user.toUpperCase();
 			

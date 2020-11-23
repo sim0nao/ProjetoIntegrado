@@ -34,7 +34,7 @@ public class Arquivo {
 					String[] dados = linha.split(",");
 					
 					if (dados[0].equals(user)) {
-						if(dados[4].contains("Presidente")) {
+						if(dados[4].contains("PRESIDENTE")) {
 							usuario = new Presidente();
 						}else if(dados[4].contains("CPS")) {
 							usuario= new CPS();
@@ -111,6 +111,8 @@ public class Arquivo {
 
 		return buffer.toString();
 	}
+	
+	
 	
 	public void gravaCandidato(String textoCandidato) throws IOException{
 		File dir = new File("C:\\TEMP");

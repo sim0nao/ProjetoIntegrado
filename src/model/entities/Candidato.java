@@ -8,6 +8,7 @@ public class Candidato  extends Usuario{
 	private boolean Deficiencia;
 	private int Nota;
 	private int prioridade;
+	private String status;
 	
 	public String getDataNascimento() {
 		return DataNascimento;
@@ -45,19 +46,24 @@ public class Candidato  extends Usuario{
 	public void setPrioridade(int prioridade) {
 		this.prioridade = prioridade;
 	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
 	@Override
 	public String toString() {
-		return  "DataNascimento=" + DataNascimento + ", Telefone=" + Telefone + ", Endereco=" + Endereco
-				+ ", Deficiencia=" + Deficiencia + ", Nota=" + Nota;
+		return getCpf() + ", " +getNome() + ", " + getEmail() + ", " + getSenha()
+				+", " + DataNascimento + ", " + Telefone + ", " + Endereco
+				+ ", " + Deficiencia + ", " + Nota;
 	}
+	
 	@Override
 	public void visualisarEdital() {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
-	
-	
 	
 }

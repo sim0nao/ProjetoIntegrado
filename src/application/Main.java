@@ -16,8 +16,8 @@ public class Main {
 		String user="";
 
 		while (!user.equals("SAIR")) {
-			user = JOptionPane.showInputDialog("BEM-VINDO AO PROJETO INTEGRADO\n" + "\nDigite o CPF do usuário" + "\n Ou digite"
-					+ "\n 'cadastrar' para inserir usuário" + "\n 'sair' para finalizar");
+			user = JOptionPane.showInputDialog("BEM-VINDO AO PROJETO INTEGRADO\n" + "\nDigite o CPF do usuário"
+					+ "\nDigite 'cadastrar' para inserir usuário" + "\nDigite sair para finalizar");
 			
 			user=user.toUpperCase();
 			
@@ -29,6 +29,7 @@ public class Main {
 					e.printStackTrace();
 				}
 			}
+			if(user==null){user="default";}
 			switch (user) {
 			case "CANDIDATO":
 				tela.candidatoTela(usuario.getCpf());
@@ -45,7 +46,7 @@ public class Main {
 			case "CPS":
 				tela.cpsTela();
 				break;
-			
+						
 
 			case "CADASTRAR":
 				try {

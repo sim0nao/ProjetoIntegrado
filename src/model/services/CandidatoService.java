@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 
 import model.entities.Candidato;
+import model.entities.Curriculo;
 import util.LinkedList;
 import util.Arquivo;
 
@@ -19,6 +20,7 @@ public class CandidatoService {
 		int D;
 		Arquivo arq = new Arquivo();
 		Candidato user = new Candidato();
+		Curriculo curriculo= new Curriculo();
 		
 		user=(Candidato)arq.lerArquivo(cpf);
 		
@@ -34,6 +36,20 @@ public class CandidatoService {
 		//System.out.println(user.getNome() +", "+ user.getEmail()+", "+user.getCpf()+ ", " +user);
 		String textoCandidato= user.toString();
 		arq.gravaCandidato(textoCandidato);
+		
+		//Cadastrar Curriculo
+		JOptionPane.showMessageDialog(null, "Cadastre o curriculo");
+		String[] infoCandidato = textoCandidato.split(",");
+		curriculo.setCpf(infoCandidato[0]);
+		curriculo.setNome(infoCandidato[1]);
+		curriculo.setEndereco(infoCandidato[6]);
+		curriculo.setObjetivo(JOptionPane.showInputDialog("Digite o objetivo"));
+		curriculo.setFormacao(JOptionPane.showInputDialog("Digite a formação"));
+		curriculo.setExperiencia(JOptionPane.showInputDialog("Digite a experiência"));
+		
+		String textoCurriculo=curriculo.toString();
+		arq.gravarCurriculo(textoCurriculo);
+
 	}
 	
 	public void acompanhaInscricao(String cpf) throws IOException {

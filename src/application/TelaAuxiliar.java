@@ -74,7 +74,7 @@ public class TelaAuxiliar {
 		}
 	}
 	
-	public void cpsTela() {
+	public void cpsTela() throws IOException {
 		int op = 0;
 
 		while (op != 9) {

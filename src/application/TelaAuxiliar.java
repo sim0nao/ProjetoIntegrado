@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 
 import model.entities.Candidato;
+import model.entities.Edital;
 import model.services.CandidatoService;
 import model.services.CpsService;
 import model.services.CraService;
@@ -12,6 +13,7 @@ import model.services.PresidenteService;
 import util.ArquivosCandidato;
 import util.ArquivosCandidatoFinal;
 import util.DoublyLinkedList;
+import util.DynamicStack;
 
 public class TelaAuxiliar {
 	
@@ -49,32 +51,41 @@ public class TelaAuxiliar {
 	}
 	
 	public void presidenteTela() {
+		DynamicStack<Edital> pilha = new DynamicStack<Edital>();
+		PresidenteService service = new PresidenteService();
+		//service.carregaArquivo(pilha);
+		//necessario ajustar o ler arquivo e adicionar a pilha
 		int op = 0;
 
 		while (op != 9) {
-			PresidenteService service = new PresidenteService();
+
+
 			op = Integer.parseInt(
-					JOptionPane.showInputDialog("PRESIDENTE"+"\nDigite 1: Criar edital" + "\nDigite 2: Alterar edital"
+					JOptionPane.showInputDialog("PRESIDENTE"+"\nDigite 1: Criar edital" + "\nDigite 2: Alterar ultimo edital "
 							+ "\nDigite 3: Visualizar edital" + "\nDigite 9: Voltar"));
 			switch (op) {
 			case 1:
 				service.criarEdital();
+				pilha.push(service.criarEdital());
 				break;
 
 			case 2:
 				service.alterarEdital();
+				JOptionPane.showMessageDialog(null, "Ultimo edital sera excluido por favor reinserir as informaçoes");
+				pilha.pop();
+				pilha.push(service.criarEdital());
 				break;
 
 			case 3:
-				service.visualizarEdital();
+				service.visualizarEdital(pilha);
 				break;
 
 			case 9:
+				service.GravaArquivo(pilha);//necessario adicionar limpar o arquivo quando realizar nova gravação para nao haver conflito
 				break;
 
 			default:
 				break;
-
 			}
 		}
 	}

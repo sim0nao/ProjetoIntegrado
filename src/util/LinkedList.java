@@ -163,4 +163,16 @@ public class LinkedList<E> {
 		}
 		return aux;
 	}
+	
+	public int size() {
+		int tamanho=0;
+		
+
+		Node<E> current = firstNode;
+		while (current != null) {
+			tamanho++;
+			current = current.next;
+		}
+		return tamanho;
+	}
 }

@@ -44,6 +44,7 @@ public class ArquivosCandidatoFinal {
 				while (linha != null) { // procurando End Of File (EOF)
 					String[] info= linha.split(", ");
 						if(info[0].equals(cpf)) {
+							candidato.setCpf(info[0]);
 							candidato.setNome(info[1]);
 							candidato.setEmail(info[2]);
 							candidato.setNota(info[8]);
@@ -63,5 +64,38 @@ public class ArquivosCandidatoFinal {
 			throw new IOException("Diretório inválido");
 		}
 		return null;
+	}
+	public LinkedList<Candidato> lerCandidatosVetor() throws IOException {
+		
+		LinkedList<Candidato> listaCandidatos = new LinkedList<Candidato>();
+		
+		File dir = new File("C:\\TEMP");
+		File arq = new File("C:\\TEMP", "CandidatosFinal.txt");	
+			
+		if (dir.exists() && dir.isDirectory()) {
+			if (arq.exists() && arq.isFile()) {
+				FileInputStream fluxo = new FileInputStream(arq);
+				InputStreamReader leitor = new InputStreamReader(fluxo);
+				BufferedReader buffer = new BufferedReader(leitor);
+				String linha = buffer.readLine();
+				while (linha != null) { // procurando End Of File (EOF)
+					String[] info= linha.split(", ");
+					Candidato candidato = new Candidato();
+					candidato.setCpf(info[0]);
+					candidato.setNome(info[1]);
+					candidato.setEmail(info[2]);
+					candidato.setNota(info[8]);
+					candidato.setStatus(info[9]);
+					listaCandidatos.addEnd(candidato);
+					linha=buffer.readLine();					
+				}
+				buffer.close();
+				leitor.close();
+				fluxo.close();
+			}
+		} else {
+			throw new IOException("Diretório inválido");
+		}
+		return listaCandidatos;
 	}
 }

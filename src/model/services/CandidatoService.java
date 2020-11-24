@@ -9,6 +9,7 @@ import model.entities.Curriculo;
 import util.LinkedList;
 import util.ArquivosUsuario;
 import util.ArquivosCandidato;
+import util.ArquivosCandidatoFinal;
 import util.ArquivosCurriculo;
 
 public class CandidatoService {
@@ -29,7 +30,7 @@ public class CandidatoService {
 		user=(Candidato)usu.lerUsuario(cpf);
 		
 		user.setDataNascimento(JOptionPane.showInputDialog("Digite data de Nascimento DD/MM/AAAA"));
-		user.setTelefone(Long.parseLong(JOptionPane.showInputDialog("Digite telefone")));
+		user.setTelefone(JOptionPane.showInputDialog("Digite telefone"));
 		user.setEndereco(JOptionPane.showInputDialog("Digite endereço"));
 		D =  Integer.parseInt(JOptionPane.showInputDialog("Se possuir alguma deficiência Digite 1, caso contrario 2"));
 		if (D == 1) {
@@ -56,14 +57,15 @@ public class CandidatoService {
 	}
 	
 	public void acompanhaInscricao(String cpf) throws IOException {
-		ArquivosUsuario usu = new ArquivosUsuario();
+		ArquivosCandidatoFinal usu = new ArquivosCandidatoFinal();
 		Candidato user = new Candidato();
-		user=(Candidato)usu.lerUsuario(cpf);
+		user=(Candidato)usu.lerCandidatoFinal(cpf);
+
 		
 		if(user.getStatus()==null) {
 			user.setStatus("AGUARDANDO");
 		}
-		JOptionPane.showMessageDialog(null, user.getNome()+", "+user.getEmail()+", "+user.getStatus());
+		JOptionPane.showMessageDialog(null, user.getNome()+", "+user.getEmail()+", "+user.getNota()+", "+user.getStatus());
 		
 	}
 	
@@ -77,6 +79,7 @@ public class CandidatoService {
 		}
 		
 		String motivoRecurso = JOptionPane.showInputDialog("Especifique motivo do recurso");
-		//System.out.println(motivoRecurso);
+		System.out.println(motivoRecurso);
+		//gravar motivo recurso
 	}
 }

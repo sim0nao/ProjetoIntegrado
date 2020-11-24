@@ -3,10 +3,10 @@ package model.entities;
 public class Candidato  extends Usuario{
 
 	private String DataNascimento;
-	private long Telefone;
+	private String Telefone;
 	private String Endereco;
 	private boolean Deficiencia;
-	private int Nota;
+	private String Nota;
 	private int prioridade;
 	private String status;
 	
@@ -16,11 +16,11 @@ public class Candidato  extends Usuario{
 	public void setDataNascimento(String dataNascimento) {
 		DataNascimento = dataNascimento;
 	}
-	public long getTelefone() {
+	public String getTelefone() {
 		return Telefone;
 	}
-	public void setTelefone(long telefone) {
-		Telefone = telefone;
+	public void setTelefone(String info) {
+		Telefone = info;
 	}
 	public String getEndereco() {
 		return Endereco;
@@ -34,11 +34,11 @@ public class Candidato  extends Usuario{
 	public void setDeficiencia(boolean deficiencia) {
 		Deficiencia = deficiencia;
 	}
-	public int getNota() {
+	public String getNota() {
 		return Nota;
 	}
-	public void setNota(int nota) {
-		Nota = nota;
+	public void setNota(String info) {
+		Nota = info;
 	}
 	public int getPrioridade() {
 		return prioridade;
@@ -57,7 +57,7 @@ public class Candidato  extends Usuario{
 	public String toString() {
 		return getCpf() + ", " +getNome() + ", " + getEmail() + ", " + getSenha()
 				+", " + DataNascimento + ", " + Telefone + ", " + Endereco
-				+ ", " + Deficiencia + ", " + Nota;
+				+ ", " + Deficiencia + ", " + Nota +", "+ status;
 	}
 	
 	@Override

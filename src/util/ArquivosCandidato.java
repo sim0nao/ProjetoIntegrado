@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
+import model.entities.Candidato;
+
 public class ArquivosCandidato {
 	
 	public void gravaCandidato(String textoCandidato) throws IOException{
@@ -30,12 +32,13 @@ public class ArquivosCandidato {
 		}
 	}
 	
-	public String lerCandidato() throws IOException {
+	public DoublyLinkedList<Candidato> lerCandidato(DoublyLinkedList<Candidato> listaCandidatos) throws IOException {
 
 		File dir = new File("C:\\TEMP");
 		File arq = new File("C:\\TEMP", "Candidatos.txt");
 		
-		String mostraCandidatos="CPF/Nome/Email \n";
+		
+		
 
 		if (dir.exists() && dir.isDirectory()) {
 			if (arq.exists() && arq.isFile()) {
@@ -45,7 +48,16 @@ public class ArquivosCandidato {
 				String linha = buffer.readLine();
 				while (linha != null) { // procurando End Of File (EOF)
 					String[] info= linha.split(",");
-					mostraCandidatos+=info[0]+info[1]+info[2]+"\n";
+					Candidato candidato = new Candidato();
+					candidato.setCpf(info[0]);
+					candidato.setNome(info[1]);
+					candidato.setEmail(info[2]);
+					candidato.setSenha(info[3]);
+					candidato.setDataNascimento(info[4]);
+					candidato.setTelefone(info[5]);
+					candidato.setEndereco(info[6]);
+					
+					listaCandidatos.addEnd(candidato);
 					linha=buffer.readLine();
 				}
 				buffer.close();
@@ -55,6 +67,6 @@ public class ArquivosCandidato {
 		} else {
 			throw new IOException("Diretório inválido");
 		}
-		return mostraCandidatos;
+		return listaCandidatos;
 	}
 }

@@ -4,11 +4,14 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-
+import model.entities.Candidato;
 import model.services.CandidatoService;
 import model.services.CpsService;
 import model.services.CraService;
 import model.services.PresidenteService;
+import util.ArquivosCandidato;
+import util.ArquivosCandidatoFinal;
+import util.DoublyLinkedList;
 
 public class TelaAuxiliar {
 	
@@ -17,6 +20,8 @@ public class TelaAuxiliar {
 
 		while (op != 9) {
 			CandidatoService service = new CandidatoService();
+			
+			
 			op = Integer.parseInt(JOptionPane
 					.showInputDialog("CANDIDATO"+"\nDigite 1: Realizar inscrição" + "\nDigite 2: Acompanhar inscrição"
 							+ "\nDigite 3: Solicitar recurso" + "\nDigite 9: Voltar"));
@@ -76,21 +81,28 @@ public class TelaAuxiliar {
 	
 	public void cpsTela() throws IOException {
 		int op = 0;
-
+		DoublyLinkedList<Candidato> listaCandidatos = new DoublyLinkedList<Candidato>();
+		ArquivosCandidato can = new ArquivosCandidato();
+		ArquivosCandidatoFinal arqFinal = new ArquivosCandidatoFinal();
+		String textoCandidato="";
+		
+		can.lerCandidato(listaCandidatos);
+		
 		while (op != 9) {
 			CpsService service = new CpsService();
 			op = Integer.parseInt(JOptionPane.showInputDialog("CPS"+"\nDigite 1: Avaliar currículo"
 					+ "\nDigite 2: Validar documentos" + "\nDigite 9: Voltar"));
 			switch (op) {
 			case 1:
-				service.avaliarCurriculo();
+				textoCandidato=service.avaliarCurriculo(listaCandidatos);
 				break;
 
 			case 2:
-				service.validarDocumento();
+				textoCandidato=service.validarDocumento(listaCandidatos);
 				break;
 
 			case 9:
+				arqFinal.gravaCandidatoFinal(textoCandidato);
 				break;
 
 			default:
@@ -100,16 +112,20 @@ public class TelaAuxiliar {
 		}
 	}
 	
-	public void craTela() {
+	public void craTela() throws IOException {
 		int op = 0;
-
+		
+		DoublyLinkedList<Candidato> listaCandidatos = new DoublyLinkedList<Candidato>();
+		ArquivosCandidato can = new ArquivosCandidato();
+		can.lerCandidato(listaCandidatos);
+		
 		while (op != 9) {
 			CraService service = new CraService();
 			op = Integer.parseInt(JOptionPane.showInputDialog("CRA"+"\nDigite 1: Validar documentos"
 															+ "\nDigite 9: Voltar"));
 			switch (op) {
 			case 1:
-				service.validarDocumentos();
+				service.validarDocumentos(listaCandidatos);
 				break;
 
 			case 9:

@@ -1,9 +1,9 @@
 package util;
 
 public class Node<E> {
-	E data;
+	public E data;
 	Node<E> previous;
-	Node<E> next;
+	public Node<E> next;
 	
 
 	public Node(E data) {

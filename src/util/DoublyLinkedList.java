@@ -93,4 +93,10 @@ public class DoublyLinkedList<E> {
 		}
 		return aux;
 	}
+	
+	public Node<E> getFirstNode() {
+		Node<E> current=firstNode;
+		return current;
+		}
+		
 }

@@ -88,7 +88,7 @@ public class DoublyLinkedList<E> {
 
 		Node<E> current = firstNode;
 		while (current != null) {
-			aux += "\n"+ current.data;
+			aux += current.data+"\n";
 			current = current.next;
 		}
 		return aux;

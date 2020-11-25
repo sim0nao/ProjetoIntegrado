@@ -53,7 +53,7 @@ public class TelaAuxiliar {
 	public void presidenteTela() throws IOException {
 		DynamicStack<Edital> pilha = new DynamicStack<Edital>();
 		PresidenteService service = new PresidenteService();
-		service.carregaArquivo(pilha);
+		service.carregaArquivo(pilha);//buscar aquivo com os dados do edital e registra na pilha
 		
 		
 	

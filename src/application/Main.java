@@ -12,6 +12,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		TelaAuxiliar tela = new TelaAuxiliar();
 		ArquivosUsuario usu= new ArquivosUsuario();
+		
 		Usuario usuario=null;
 		String user="";
 

@@ -88,7 +88,7 @@ public class ArquivosCandidatoFinal {
 					candidato.setEmail(info[2]);
 					candidato.setNota(info[8]);
 					candidato.setStatus(info[9]);
-					listaCandidatos.addEnd(candidato);
+					listaCandidatos.addEnd(candidato);//Adiciona no final da lista
 					linha=buffer.readLine();					
 				}
 				buffer.close();
@@ -98,6 +98,6 @@ public class ArquivosCandidatoFinal {
 		} else {
 			throw new IOException("Diretório inválido");
 		}
-		return listaCandidatos;
+		return listaCandidatos;//retorna a lista
 	}
 }

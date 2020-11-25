@@ -111,7 +111,7 @@ public class ArquivosUsuario {
 	}
 	
 	
-	
+	//método utilizado para retorna a classe do usuário no swift case da main
 	public String tipo(String user) throws IOException {
 		File dir = new File("C:\\TEMP");
 		File arq = new File("C:\\TEMP", "Usuarios.txt");

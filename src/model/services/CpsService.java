@@ -30,7 +30,7 @@ public class CpsService {
 			}
 			current = current.next;
 		}
-		return listaCandidatos.showLinkedList();
+		return listaCandidatos.showLinkedList();//retorna a lista encadeada em forma de string
 	}
 
 	

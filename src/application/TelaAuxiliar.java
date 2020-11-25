@@ -53,6 +53,7 @@ public class TelaAuxiliar {
 	public void presidenteTela() throws IOException {
 		DynamicStack<Edital> pilha = new DynamicStack<Edital>();
 		PresidenteService service = new PresidenteService();
+		
 		//Nas funções do Presidente foi utilizado uma estrutura de pilha para trabalahr os dados
 		int op = 0;
 
@@ -65,7 +66,7 @@ public class TelaAuxiliar {
 			switch (op) {
 			case 1:
 				
-				pilha.push(service.criarEdital());
+				pilha.push(service.criarEdital()); //adiciona edital na pilha
 				break;
 
 			case 2:
@@ -80,11 +81,11 @@ public class TelaAuxiliar {
 				break;
 				
 			case 4:
-				JOptionPane.showMessageDialog(null, service.mostraFinalOrdenado());
+				JOptionPane.showMessageDialog(null, service.mostraFinalOrdenado());//utiliza do metodo Quick Sort para ordenar
 				break;
 
 			case 9:
-				service.GravaArquivo(pilha);
+				service.GravaArquivo(pilha); //gravação no arquivo ao sair da tela do usuário
 				break;
 
 			default:
@@ -98,6 +99,7 @@ public class TelaAuxiliar {
 		DoublyLinkedList<Candidato> listaCandidatos = new DoublyLinkedList<Candidato>();
 		ArquivosCandidato can = new ArquivosCandidato();
 		ArquivosCandidatoFinal arqFinal = new ArquivosCandidatoFinal();
+		
 		//Em CPS a lista duplamente encadeada é implementada para gerir as informações de candidatos
 		
 		String textoCandidato="";
@@ -118,7 +120,7 @@ public class TelaAuxiliar {
 				break;
 
 			case 9:
-				arqFinal.gravaCandidatoFinal(textoCandidato);
+				arqFinal.gravaCandidatoFinal(textoCandidato);//gravação no arquivo ao sair da tela do usuário
 				break;
 
 			default:
@@ -133,6 +135,8 @@ public class TelaAuxiliar {
 		ArquivosCandidato can = new ArquivosCandidato();
 		
 		can.lerCandidato(listaCandidatos);
+		
+		//método semelhante as funções do CPS
 		
 		int op = 0;	
 		while (op != 9) {

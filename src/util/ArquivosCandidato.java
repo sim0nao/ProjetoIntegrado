@@ -55,7 +55,7 @@ public class ArquivosCandidato {
 					candidato.setTelefone(info[5]);
 					candidato.setEndereco(info[6]);
 					
-					listaCandidatos.addEnd(candidato);
+					listaCandidatos.addEnd(candidato);//Adciona candidato na lista
 					linha=buffer.readLine();
 				}
 				buffer.close();

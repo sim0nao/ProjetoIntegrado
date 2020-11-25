@@ -43,7 +43,7 @@ public class CandidatoService {
 		String textoCandidato= user.toString();
 		can.gravaCandidato(textoCandidato);
 		
-		//Cadastrar Curriculo
+		//Cadastrar Curriculo do candidato
 		JOptionPane.showMessageDialog(null, "Cadastre o curriculo");
 		String[] infoCandidato = textoCandidato.split(",");
 		curriculo.setCpf(infoCandidato[0]);
@@ -55,7 +55,7 @@ public class CandidatoService {
 		
 		
 		String textoCurriculo=curriculo.toString();
-		cur.gravarCurriculo(textoCurriculo);
+		cur.gravarCurriculo(textoCurriculo); //gravação executada sempre que inserido novo candidato
 
 	}
 	

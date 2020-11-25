@@ -43,13 +43,13 @@ public class PresidenteService {
 		String[] info= linha.split("\n");
 		String dados = "";
 	
-		
+		//Organiza o showDynamicStack para ser gravado em arquivo
 		for (int i = info.length - 1; i >= 0 ; i--) {
 			dados+= (info[i]) +"\n";
 		}
 		
 		try {
-			
+			//grava pilha inteira em arquivo
 			arqEdital.gravaEdital(dados);
 		} catch (IOException e) {
 			e.printStackTrace();

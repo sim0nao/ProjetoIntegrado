@@ -4,9 +4,13 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
+import model.entities.Candidato;
 import model.entities.Edital;
 import util.ArquivoEdital;
+import util.ArquivosCandidatoFinal;
 import util.DynamicStack;
+import util.LinkedList;
+import util.QuickSort;
 
 public class PresidenteService {
 
@@ -67,7 +71,33 @@ public class PresidenteService {
 
 		return pilha;
 	}
-
+	
+	public String mostraFinalOrdenado() throws IOException {
+		
+		ArquivosCandidatoFinal arqCan= new ArquivosCandidatoFinal();
+		
+		LinkedList<Candidato> listaCandidatos = arqCan.lerCandidatosVetor();
+		int tamanho=listaCandidatos.size();
+		Candidato[] candidatos = new Candidato[tamanho];
+		int[] candidatosAux = new int[tamanho];
+		for(int i=0;i<tamanho;i++) {
+			candidatos[i]=listaCandidatos.removeStart();
+			candidatosAux[i]=Integer.parseInt(candidatos[i].getNota());
+		}
+		
+		QuickSort ordena= new QuickSort();
+		int start=0;
+		int end=tamanho-1;
+		
+		ordena.sort(candidatosAux, start, end, candidatos);
+		
+		String mostra="";
+		for(int i=tamanho-1;i>=0;i--) {
+			mostra += "Nome: "+candidatos[i].getNome()+", Nota:  "
+					+candidatos[i].getNota()+",  Situação documento: "+candidatos[i].getStatus() + "\n";	
+		}
+		return mostra;
+	}
 
 
 }

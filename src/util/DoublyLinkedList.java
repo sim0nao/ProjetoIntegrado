@@ -86,10 +86,11 @@ public class DoublyLinkedList<E> {
 			return "Lista vazia!";
 		}
 
-		Node<E> current = firstNode;
+		Node<E> current = firstNode ;
 		while (current != null) {
-			aux += "\n"+ current.data;
+			aux += "\n" + current.data;
 			current = current.next;
+			
 		}
 		return aux;
 	}

@@ -38,10 +38,19 @@ public class PresidenteService {
 	
 	public void GravaArquivo(DynamicStack<Edital> pilha) {
 		ArquivoEdital arqEdital = new ArquivoEdital();
-
-
+		
+		String linha = pilha.showDynamicStack();;
+		String[] info= linha.split("\n");
+		String dados = "";
+	
+		
+		for (int i = info.length - 1; i >= 0 ; i--) {
+			dados+= (info[i]) +"\n";
+		}
+		
 		try {
-			arqEdital.gravaEdital(pilha.showDynamicStack());
+			
+			arqEdital.gravaEdital(dados);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -51,9 +60,8 @@ public class PresidenteService {
 		ArquivoEdital arqEdital = new ArquivoEdital();
 
 		try {
-		System.out.println(arqEdital.lerEdital());	
+		arqEdital.lerEdital(pilha);	
 		} catch (IOException e) {
-
 			e.printStackTrace();
 		}
 

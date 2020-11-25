@@ -53,8 +53,11 @@ public class TelaAuxiliar {
 	public void presidenteTela() {
 		DynamicStack<Edital> pilha = new DynamicStack<Edital>();
 		PresidenteService service = new PresidenteService();
-		//service.carregaArquivo(pilha);
-		//necessario ajustar o ler arquivo e adicionar a pilha
+		service.carregaArquivo(pilha);
+		
+		
+	
+		
 		int op = 0;
 
 		while (op != 9) {
@@ -65,7 +68,7 @@ public class TelaAuxiliar {
 							+ "\nDigite 3: Visualizar edital" + "\nDigite 9: Voltar"));
 			switch (op) {
 			case 1:
-				service.criarEdital();
+				
 				pilha.push(service.criarEdital());
 				break;
 
@@ -81,7 +84,7 @@ public class TelaAuxiliar {
 				break;
 
 			case 9:
-				service.GravaArquivo(pilha);//necessario adicionar limpar o arquivo quando realizar nova gravação para nao haver conflito
+				service.GravaArquivo(pilha);
 				break;
 
 			default:

@@ -39,7 +39,6 @@ public class ArquivosCurriculo {
 	
 	
 	public String lerCurriculo(String cpf) throws IOException {
-
 		File dir = new File("C:\\TEMP");
 		File arq = new File("C:\\TEMP", "Curriculos.txt");
 

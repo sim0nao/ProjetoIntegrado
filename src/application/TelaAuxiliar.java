@@ -53,8 +53,7 @@ public class TelaAuxiliar {
 	public void presidenteTela() throws IOException {
 		DynamicStack<Edital> pilha = new DynamicStack<Edital>();
 		PresidenteService service = new PresidenteService();
-		//service.carregaArquivo(pilha);
-		//necessario ajustar o ler arquivo e adicionar a pilha
+		//Nas funções do Presidente foi utilizado uma estrutura de pilha para trabalahr os dados
 		int op = 0;
 
 		while (op != 9) {
@@ -99,6 +98,8 @@ public class TelaAuxiliar {
 		DoublyLinkedList<Candidato> listaCandidatos = new DoublyLinkedList<Candidato>();
 		ArquivosCandidato can = new ArquivosCandidato();
 		ArquivosCandidatoFinal arqFinal = new ArquivosCandidatoFinal();
+		//Em CPS a lista duplamente encadeada é implementada para gerir as informações de candidatos
+		
 		String textoCandidato="";
 		
 		can.lerCandidato(listaCandidatos);
@@ -128,12 +129,12 @@ public class TelaAuxiliar {
 	}
 	
 	public void craTela() throws IOException {
-		int op = 0;
-		
 		DoublyLinkedList<Candidato> listaCandidatos = new DoublyLinkedList<Candidato>();
 		ArquivosCandidato can = new ArquivosCandidato();
+		
 		can.lerCandidato(listaCandidatos);
 		
+		int op = 0;	
 		while (op != 9) {
 			CraService service = new CraService();
 			op = Integer.parseInt(JOptionPane.showInputDialog("CRA"+"\nDigite 1: Validar documentos"

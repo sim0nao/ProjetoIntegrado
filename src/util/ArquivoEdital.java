@@ -14,6 +14,7 @@ public class ArquivoEdital {
 	public void gravaEdital(String edital) throws IOException{
 		File dir = new File("C:\\TEMP");
 		File arq = new File("C:\\TEMP", "Edital.txt" );
+		
 		if (dir.exists() && dir.isDirectory()) {
 			boolean existe = false;
 			if (arq.exists()) {
@@ -32,7 +33,6 @@ public class ArquivoEdital {
 	}
 	
 	public String lerEdital() throws IOException {
-
 		File dir = new File("C:\\TEMP");
 		File arq = new File("C:\\TEMP", "Edital.txt");
 		

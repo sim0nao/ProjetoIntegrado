@@ -18,11 +18,11 @@ import model.entities.Usuario;
 
 public class ArquivosUsuario {
 
-	public Usuario lerUsuario(String user) throws IOException {
-
-		Usuario usuario;
+	public Usuario lerUsuario(String user) throws IOException {	
 		File dir = new File("C:\\TEMP");
 		File arq = new File("C:\\TEMP", "Usuarios.txt");
+		
+		Usuario usuario;
 
 		if (dir.exists() && dir.isDirectory()) {
 			if (arq.exists() && arq.isFile()) {
@@ -93,6 +93,7 @@ public class ArquivosUsuario {
 			throw new IOException("Diretório inválido");
 		}
 	}
+	
 	//Gerar texto Usuário
 	private String geraTxt() {
 		StringBuffer buffer = new StringBuffer();
@@ -112,7 +113,6 @@ public class ArquivosUsuario {
 	
 	
 	public String tipo(String user) throws IOException {
-
 		File dir = new File("C:\\TEMP");
 		File arq = new File("C:\\TEMP", "Usuarios.txt");
 
@@ -143,9 +143,4 @@ public class ArquivosUsuario {
 		return null;
 	}
 	
-	
-
-	
-
-
 }

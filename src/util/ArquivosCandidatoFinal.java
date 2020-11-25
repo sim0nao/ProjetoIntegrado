@@ -15,6 +15,7 @@ public class ArquivosCandidatoFinal {
 	public void gravaCandidatoFinal(String textoCandidato) throws IOException{
 		File dir = new File("C:\\TEMP");
 		File arq = new File("C:\\TEMP", "CandidatosFinal.txt" );
+		
 		if (dir.exists() && dir.isDirectory()) {
 			String conteudo = textoCandidato;
 			FileWriter fileWriter = new FileWriter(arq, false);
@@ -30,9 +31,9 @@ public class ArquivosCandidatoFinal {
 	}
 	
 	public Usuario lerCandidatoFinal(String cpf) throws IOException {
-
 		File dir = new File("C:\\TEMP");
 		File arq = new File("C:\\TEMP", "CandidatosFinal.txt");	
+		
 		Candidato candidato = new Candidato();
 
 		if (dir.exists() && dir.isDirectory()) {
@@ -65,8 +66,9 @@ public class ArquivosCandidatoFinal {
 		}
 		return null;
 	}
-	public LinkedList<Candidato> lerCandidatosVetor() throws IOException {
-		
+	
+	
+	public LinkedList<Candidato> lerCandidatosVetor() throws IOException {	
 		LinkedList<Candidato> listaCandidatos = new LinkedList<Candidato>();
 		
 		File dir = new File("C:\\TEMP");

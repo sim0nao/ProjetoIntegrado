@@ -8,8 +8,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
-
-
 import model.entities.Edital;
 
 public class ArquivoEdital {

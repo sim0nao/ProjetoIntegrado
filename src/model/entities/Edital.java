@@ -1,9 +1,6 @@
 package model.entities;
 
-
-
 public class Edital {
-
 	
 	private int ID;
 	private String DefiniçoesDoCurso;
@@ -15,8 +12,7 @@ public class Edital {
 	
 	
 	public Edital() {
-	
-		
+			
 	}
 	
 	

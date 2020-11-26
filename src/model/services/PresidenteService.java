@@ -59,7 +59,9 @@ public class PresidenteService {
 
 	//grava em arquivo todos os editais em pilha
 	public void GravaArquivo(DynamicStack<Edital> pilha) {
-		ArquivoEdital arqEdital = new ArquivoEdital();
+		
+
+ArquivoEdital arqEdital = new ArquivoEdital();
 		
 		String linha = pilha.showDynamicStack();;
 		String[] info= linha.split("\n");
@@ -86,7 +88,6 @@ public class PresidenteService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 		return pilha;
 	}
 	
@@ -96,13 +97,16 @@ public class PresidenteService {
 		
 		LinkedList<Candidato> listaCandidatos = arqCan.lerCandidatosVetor();
 		int tamanho=listaCandidatos.size();
+		//passando a lista encadeada para um vetor de forma manual
 		Candidato[] candidatos = new Candidato[tamanho];
 		int[] candidatosAux = new int[tamanho];
+		
 		for(int i=0;i<tamanho;i++) {
 			candidatos[i]=listaCandidatos.removeStart();
 			candidatosAux[i]=Integer.parseInt(candidatos[i].getNota());
 		}
 		
+		//utilização do Quick sort para ordenar os vetores
 		QuickSort ordena= new QuickSort();
 		int start=0;
 		int end=tamanho-1;

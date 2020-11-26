@@ -18,14 +18,15 @@ public class CandidatoService {
 		return null;
 	}
 	
-	public void RealizaInscricao (String cpf) throws IOException {
-		
-		int D;
+	public void RealizaInscricao (String cpf) throws IOException {	
+
 		ArquivosUsuario usu = new ArquivosUsuario();
 		ArquivosCandidato can= new ArquivosCandidato();
 		ArquivosCurriculo cur= new ArquivosCurriculo();
 		Candidato user = new Candidato();
 		Curriculo curriculo= new Curriculo();
+		
+		int D;
 		
 		user=(Candidato)usu.lerUsuario(cpf);
 		
@@ -38,10 +39,11 @@ public class CandidatoService {
 		}else if(D==2) {
 			user.setDeficiencia(false);
 		}
+		
 		String textoCandidato= user.toString();
 		can.gravaCandidato(textoCandidato);
 		
-		//Cadastrar Curriculo
+		//Cadastrar Curriculo do candidato
 		JOptionPane.showMessageDialog(null, "Cadastre o curriculo");
 		String[] infoCandidato = textoCandidato.split(",");
 		curriculo.setCpf(infoCandidato[0]);
@@ -51,16 +53,17 @@ public class CandidatoService {
 		curriculo.setFormacao(JOptionPane.showInputDialog("Digite a formação"));
 		curriculo.setExperiencia(JOptionPane.showInputDialog("Digite a experiência"));
 		
+		
 		String textoCurriculo=curriculo.toString();
-		cur.gravarCurriculo(textoCurriculo);
+		cur.gravarCurriculo(textoCurriculo); //gravação executada sempre que inserido novo candidato
 
 	}
 	
 	public void acompanhaInscricao(String cpf) throws IOException {
 		ArquivosCandidatoFinal usu = new ArquivosCandidatoFinal();
 		Candidato user = new Candidato();
+		
 		user=(Candidato)usu.lerCandidatoFinal(cpf);
-
 		
 		if(user.getStatus()==null) {
 			user.setStatus("AGUARDANDO");
@@ -72,6 +75,7 @@ public class CandidatoService {
 	public void solicitaRecurso(String cpf) throws IOException {
 		ArquivosUsuario usu = new ArquivosUsuario();
 		Candidato user = new Candidato();
+		
 		user=(Candidato)usu.lerUsuario(cpf);
 		
 		if(user.getStatus()=="APROVADO"){
@@ -80,6 +84,5 @@ public class CandidatoService {
 		
 		String motivoRecurso = JOptionPane.showInputDialog("Especifique motivo do recurso");
 		System.out.println(motivoRecurso);
-		//gravar motivo recurso
 	}
 }

@@ -98,6 +98,6 @@ public class DoublyLinkedList<E> {
 	public Node<E> getFirstNode() {
 		Node<E> current=firstNode;
 		return current;
-		}
-		
+	}
+	
 }

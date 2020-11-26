@@ -15,6 +15,7 @@ public class ArquivosCandidato {
 	public void gravaCandidato(String textoCandidato) throws IOException{
 		File dir = new File("C:\\TEMP");
 		File arq = new File("C:\\TEMP", "Candidatos.txt" );
+		
 		if (dir.exists() && dir.isDirectory()) {
 			boolean existe = false;
 			if (arq.exists()) {
@@ -37,9 +38,6 @@ public class ArquivosCandidato {
 		File dir = new File("C:\\TEMP");
 		File arq = new File("C:\\TEMP", "Candidatos.txt");
 		
-		
-		
-
 		if (dir.exists() && dir.isDirectory()) {
 			if (arq.exists() && arq.isFile()) {
 				FileInputStream fluxo = new FileInputStream(arq);
@@ -57,7 +55,7 @@ public class ArquivosCandidato {
 					candidato.setTelefone(info[5]);
 					candidato.setEndereco(info[6]);
 					
-					listaCandidatos.addEnd(candidato);
+					listaCandidatos.addEnd(candidato);//Adciona candidato na lista
 					linha=buffer.readLine();
 				}
 				buffer.close();

@@ -49,7 +49,7 @@ public class DynamicStack<E> {
 
 		Node<E> current = firstNode;
 		while (current != null) {
-			aux += current.data +  "\n";
+			aux += current.data +  "\n" ;
 			current = current.next;
 		}
 		return aux;

@@ -12,6 +12,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		TelaAuxiliar tela = new TelaAuxiliar();
 		ArquivosUsuario usu= new ArquivosUsuario();
+		
 		Usuario usuario=null;
 		String user="";
 
@@ -19,7 +20,7 @@ public class Main {
 			user = JOptionPane.showInputDialog("BEM-VINDO AO PROJETO INTEGRADO\n" + "\nDigite o CPF do usuário"
 					+ "\nDigite 'cadastrar' para inserir usuário" + "\nDigite sair para finalizar");
 			
-			user=user.toUpperCase();
+			user=user.toUpperCase(); //Estrutura para tratar erros de digitação
 			
 			if (!user.equals("SAIR") && !user.equals("CADASTRAR")) {
 				try {
@@ -30,6 +31,7 @@ public class Main {
 				}
 			}
 			if(user==null){user="default";}
+			
 			switch (user) {
 			case "CANDIDATO":
 				tela.candidatoTela(usuario.getCpf());

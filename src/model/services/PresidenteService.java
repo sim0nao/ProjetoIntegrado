@@ -15,7 +15,7 @@ import util.QuickSort;
 public class PresidenteService {
 
 
-
+ //set os atributos no objeto edital e retona para ser inserido na pilha
 	public Edital criarEdital() {
 		Edital edital = new Edital();
 
@@ -35,11 +35,29 @@ public class PresidenteService {
 	}
 
 	
+	public void visualizaUltimoEdital(DynamicStack<Edital> pilha) {
+		String dados = "";
+		
+		
+		
+		dados += "ID - " + pilha.showTop().getID();
+		dados += "  Definiçoes Do Curso - " + pilha.showTop().getDefiniçoesDoCurso();	
+		dados += "  NumeroDe Vagas - " + pilha.showTop().getNumeroDeVagas();
+		dados += "  NumeroDeVagasDeficientes - " + pilha.showTop().getNumeroDeVagasDeficientes();
+		dados += "  Publico Alvo - " + pilha.showTop().getPublicoAlvo();
+		dados += "  Periodo Inscricao - " + pilha.showTop().getPeriodoInscricao();
+		System.out.println(dados);
+		
+	}
+	
+	//mostra todos os editais na pilha
 	public void visualizarEdital(DynamicStack<Edital> pilha) {
 		System.out.println(pilha.showDynamicStack());
+		
+	
 	}
 
-	
+	//grava em arquivo todos os editais em pilha
 	public void GravaArquivo(DynamicStack<Edital> pilha) {
 		ArquivoEdital arqEdital = new ArquivoEdital();
 		
@@ -59,7 +77,7 @@ public class PresidenteService {
 			e.printStackTrace();
 		}
 	}
-
+    //Ao iniciar o programa resgada os editais do arquivo e move para a pilha.
 	public DynamicStack<Edital> carregaArquivo(DynamicStack<Edital> pilha) {
 		ArquivoEdital arqEdital = new ArquivoEdital();
 

@@ -65,7 +65,7 @@ public class TelaAuxiliar {
 
 			op = Integer.parseInt(
 					JOptionPane.showInputDialog("PRESIDENTE"+"\nDigite 1: Criar edital" + "\nDigite 2: Alterar ultimo edital "
-							+ "\nDigite 3: Visualizar edital" + "\nDigite 4: Mostrar candidatos por nota"+"\nDigite 9: Voltar"));
+							+"\nDigite 3: Vizualizar ultimo edital" + "\nDigite 4: Visualizar todos os editais" + "\nDigite 5: Mostrar candidatos por nota"+"\nDigite 9: Voltar"));
 			switch (op) {
 			case 1:
 				
@@ -78,12 +78,19 @@ public class TelaAuxiliar {
 				pilha.pop();
 				pilha.push(service.criarEdital());
 				break;
-
+			
 			case 3:
+				
+				service.visualizaUltimoEdital(pilha);
+				break;
+			
+			
+			case 4:
 				service.visualizarEdital(pilha);
+				
 				break;
 				
-			case 4:
+			case 5:
 				JOptionPane.showMessageDialog(null, service.mostraFinalOrdenado());
 				break;
 

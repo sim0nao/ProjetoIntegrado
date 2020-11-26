@@ -54,4 +54,9 @@ public class DynamicStack<E> {
 		}
 		return aux;
 	}
+	
+	public E showTop() {
+		E top = firstNode.data;
+		return top;
+	}
 }

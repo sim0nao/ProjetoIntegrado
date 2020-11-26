@@ -11,6 +11,7 @@ public class Edital {
 	private int NumeroDeVagasDeficientes;
 	private String PublicoAlvo;
 	private String PeriodoInscricao;
+
 	
 	
 	public Edital() {
